@@ -1,4 +1,6 @@
 node_modules/**/*
+solutions/
+final/
 .expo/*
 npm-debug.*
 *.jks
@@ -11,3 +13,4 @@ web-build/
 web-report/
 config.js
 .vscode
+.DS_Store

@@ -1,11 +1,14 @@
 {
   "expo": {
-    "name": "Notedly",
-    "slug": "notedly-mobile",
+    "name": "Notic",
+    "slug": "notic-mobile",
     "description": "An example React Native app",
     "privacy": "public",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/custom/icon.png",
     "splash": {
@@ -16,7 +19,9 @@
     "updates": {
       "fallbackToCacheTimeout": 1500
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },

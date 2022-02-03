@@ -1,9 +1,7 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:react/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -12,7 +10,10 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "react-native", "prettier"],
+  "plugins": [
+    "react",
+    "react-native"
+  ],
   "env": {
     "es6": true,
     "browser": true,
