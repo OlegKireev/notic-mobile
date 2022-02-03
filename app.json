@@ -4,17 +4,17 @@
     "slug": "notic-mobile",
     "description": "An example React Native app",
     "privacy": "public",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "platforms": [
       "ios",
       "android"
     ],
     "orientation": "portrait",
-    "icon": "./assets/custom/icon.png",
+    "icon": "./assets/custom/icon-01.png",
     "splash": {
-      "image": "./assets/custom/splash.png",
+      "image": "./assets/custom/splash-01.png",
       "resizeMode": "cover",
-      "backgroundColor": "#4A90E2"
+      "backgroundColor": "#AAEDEE"
     },
     "updates": {
       "fallbackToCacheTimeout": 1500
@@ -27,8 +27,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/custom/icon.png",
-        "backgroundColor": "#4A90E2"
+        "foregroundImage": "./assets/custom/icon-01.png",
+        "backgroundColor": "#AAEDEE"
       }
     },
     "web": {
