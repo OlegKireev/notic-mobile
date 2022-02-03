@@ -34,7 +34,7 @@ const TabNavigator = createBottomTabNavigator({
     screen: FavoritesStack,
     navigationOptions: {
       tabBarLabel: 'Favorites',
-      tabBarIcon: ({ tintColor }) => <MaterialIcons name="favorite" size={24} color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => <MaterialIcons name="star" size={24} color={tintColor} />,
     },
   },
   MyNotesScreen: {
