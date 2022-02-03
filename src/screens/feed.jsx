@@ -25,6 +25,10 @@ function Feed({ navigation }) {
   );
 }
 
+Feed.navigationOptions = {
+  title: 'Feed',
+};
+
 Feed.propTypes = propTypes;
 
 export default Feed;
