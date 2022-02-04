@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View } from 'react-native';
 import styled from 'styled-components/native';
+import Note from '../Note';
 
 const mockNotes = [
   { id: 1, content: 'Tomorrow Is The Question' },
@@ -45,15 +47,8 @@ const mockNotes = [
   { id: 40, content: 'Giant Steps' },
 ];
 
-const Note = styled.View`
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 8px;
-  min-height: 100px;
-  width: 95%;
-  padding: 16px;
-  margin: 0 auto 10px;
+const ListSeparator = styled.View`
+  height: 8px;
 `;
 
 function NoteFeed() {
@@ -63,10 +58,12 @@ function NoteFeed() {
         data={mockNotes}
         keyExtractor={({ id }) => String(id)}
         renderItem={({ item }) => (
-          <Note>
-            <Text>{item.content}</Text>
-          </Note>
+          <Note data={({
+            content: item.content,
+          })}
+          />
         )}
+        ItemSeparatorComponent={() => <ListSeparator />}
       />
     </View>
   );
