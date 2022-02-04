@@ -45,7 +45,7 @@ function NoteList({
         keyExtractor={({ id }) => String(id)}
         renderItem={({ item }) => (
           <TouchableOpacity
-            activeOpacity={0.5}
+            activeOpacity={0.75}
             onPress={handleNotePress(item.id)}
           >
             <Note

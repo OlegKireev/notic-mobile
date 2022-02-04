@@ -23,6 +23,16 @@ const Author = styled.Text`
   color: #7e7e7e;
 `;
 
+const Footer = styled.View`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  z-index: 1;
+  background-color: white;
+`;
+
 const propTypes = {
   data: PropTypes.shape({
     id: PropTypes.string,
@@ -80,16 +90,17 @@ function Note({
           {data.content}
         </Markdown>
       </SafeAreaView>
+      <Footer />
       {isPreview && (
         <LinearGradient
           colors={['transparent', 'white', 'white']}
           style={{
-            height: 20,
+            height: 12,
             position: 'absolute',
-            bottom: 0,
+            bottom: 12,
             left: 0,
-            zIndex: 1,
-            width: '150%',
+            right: 0,
+            zIndex: 2,
           }}
         />
       )}
