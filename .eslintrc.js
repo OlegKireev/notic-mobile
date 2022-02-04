@@ -28,6 +28,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
     'react/jsx-filename-extension': 'off',
+    'react/no-unstable-nested-components': 'off',
   },
   settings: {
     react: {

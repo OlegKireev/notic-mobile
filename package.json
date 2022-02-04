@@ -10,6 +10,9 @@
   "dependencies": {
     "@apollo/client": "^3.2.7",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^6.2.0",
+    "@react-navigation/native": "^6.0.8",
+    "@react-navigation/native-stack": "^6.4.1",
     "apollo-link-context": "^1.0.20",
     "date-fns": "^2.16.1",
     "expo": "~44.0.6",
@@ -28,9 +31,6 @@
     "react-native-screens": "~3.10.2",
     "react-native-tab-view": "3.1.1",
     "react-native-web": "~0.17.5",
-    "react-navigation": "^4.4.3",
-    "react-navigation-stack": "^2.10.1",
-    "react-navigation-tabs": "^2.10.1",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
