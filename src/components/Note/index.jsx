@@ -18,7 +18,15 @@ const Content = styled.Text`
 
 const propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.string,
     content: PropTypes.string,
+    author: PropTypes.shape({
+      avatar: PropTypes.string,
+      id: PropTypes.string,
+      username: PropTypes.string,
+    }),
+    createdAt: PropTypes.string,
+    favoriteCount: PropTypes.number,
   }).isRequired,
 };
 
