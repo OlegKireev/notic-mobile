@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Note from '../Note';
@@ -19,6 +19,10 @@ const propTypes = {
   })).isRequired,
 };
 
+const List = styled.FlatList`
+  padding: 8px;
+`;
+
 const ListSeparator = styled.View`
   height: 8px;
 `;
@@ -36,7 +40,7 @@ function NoteList({
 
   return (
     <View>
-      <FlatList
+      <List
         data={data}
         keyExtractor={({ id }) => String(id)}
         renderItem={({ item }) => (
@@ -45,9 +49,7 @@ function NoteList({
             onPress={handleNotePress(item.id)}
           >
             <Note
-              data={({
-                content: item.content,
-              })}
+              data={item}
               isPreview
             />
           </TouchableOpacity>

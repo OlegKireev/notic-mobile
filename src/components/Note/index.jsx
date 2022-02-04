@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SafeAreaView } from 'react-native';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Markdown from 'react-native-markdown-renderer';
+import Markdown from 'react-native-markdown-display';
+import { format } from 'date-fns';
 
 const StyledNote = styled.ScrollView`
+  padding: 12px;
+`;
+
+const NotePreview = styled.View`
+  border-radius: 6px;
+  background-color: white;
   position: relative;
   padding: 12px;
-  background-color: white;
-  margin-bottom: 6px;
-  border-radius: 6px;
-  margin: 0 6px;
-`;
-
-const NotePreview = styled(StyledNote)`
-  max-height: 200px;
+  height: 200px;
   overflow: hidden;
-  box-shadow: 0px 0px 15px black;
 `;
 
-const Content = styled.Text`
-  color: #213c61;
-  justify-content: center;
-  align-items: center;
+const Author = styled.Text`
+  color: #7e7e7e;
 `;
 
 const propTypes = {
@@ -52,21 +50,46 @@ function Note({
     : StyledNote;
   return (
     <NoteComponent>
-      <Content>
-        <Markdown>
+      <SafeAreaView>
+        <Author>
+          Note by
+          {' '}
+          {data?.author?.username}
+          {' '}
+          / Published
+          {' '}
+          {format(new Date(data.createdAt), 'MMM do yyyy')}
+        </Author>
+        <Markdown style={{
+          body: {
+          },
+          heading1: {
+            fontWeight: 'bold',
+            color: '#213c61',
+          },
+          heading2: {
+            fontWeight: 'bold',
+            color: '#213c61',
+          },
+          paragraph: {
+            fontSize: 16,
+            lineHeight: 24,
+          },
+        }}
+        >
           {data.content}
         </Markdown>
-      </Content>
+      </SafeAreaView>
       {isPreview && (
         <LinearGradient
-          colors={['transparent', 'white']}
+          colors={['transparent', 'white', 'white']}
           style={{
-            height: 30,
+            height: 20,
             position: 'absolute',
             bottom: 0,
             left: 0,
             zIndex: 1,
-            width: '100%',
+            width: '150%',
           }}
         />
       )}
