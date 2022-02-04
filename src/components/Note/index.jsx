@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
 const StyledNote = styled.ScrollView`
-  padding: 10px;
+  padding: 12px;
+  background-color: white;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  margin: 0 6px;
+`;
+
+const Content = styled.Text`
+  color: #213c61;
+  justify-content: center;
+  align-items: center;
 `;
 
 const propTypes = {
   data: PropTypes.shape({
-    id: PropTypes.string,
     content: PropTypes.string,
   }).isRequired,
 };
@@ -19,7 +27,7 @@ function Note({
 }) {
   return (
     <StyledNote>
-      <Text>{data.content}</Text>
+      <Content>{data.content}</Content>
     </StyledNote>
   );
 }
