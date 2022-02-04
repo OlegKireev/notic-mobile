@@ -1,6 +1,6 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Note from '../Note';
 
@@ -51,17 +51,30 @@ const ListSeparator = styled.View`
   height: 8px;
 `;
 
-function NoteFeed() {
+function NoteList() {
+  const navigation = useNavigation();
+
+  const handleNotePress = (id) => () => {
+    navigation.navigate('Note', {
+      id,
+    });
+  };
+
   return (
     <View>
       <FlatList
         data={mockNotes}
         keyExtractor={({ id }) => String(id)}
         renderItem={({ item }) => (
-          <Note data={({
-            content: item.content,
-          })}
-          />
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={handleNotePress(item.id)}
+          >
+            <Note data={({
+              content: item.content,
+            })}
+            />
+          </TouchableOpacity>
         )}
         ItemSeparatorComponent={() => <ListSeparator />}
       />
@@ -69,4 +82,4 @@ function NoteFeed() {
   );
 }
 
-export default NoteFeed;
+export default NoteList;
