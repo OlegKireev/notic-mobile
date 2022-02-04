@@ -1,58 +1,86 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Feed from './feed';
-import Favorites from './favorites';
-import MyNotes from './my-notes';
-import Note from './note';
+import FeedScreen from './feed';
+import FavoritesScreen from './favorites';
+import MyNotesScreen from './my-notes';
+import NoteScreen from './note';
 
-const FeedStack = createStackNavigator({
-  Feed,
-  Note,
-});
-const FavoritesStack = createStackNavigator({
-  Favorites,
-  Note,
-});
-const MyNotesStack = createStackNavigator({
-  MyNotes,
-  Note,
-});
+const FeedStack = createNativeStackNavigator();
+function FeedStackScreen() {
+  return (
+    <FeedStack.Navigator>
+      <FeedStack.Screen name="Feed" component={FeedScreen} />
+      <FeedStack.Screen name="Note" component={NoteScreen} />
+    </FeedStack.Navigator>
+  );
+}
 
-const TabNavigator = createBottomTabNavigator({
-  FeedScreen: {
-    screen: FeedStack,
-    navigationOptions: {
-      tabBarLabel: 'Feed',
-      tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="home" size={24} color={tintColor} />,
-    },
-  },
-  FavoritesScreen: {
-    screen: FavoritesStack,
-    navigationOptions: {
-      tabBarLabel: 'Favorites',
-      tabBarIcon: ({ tintColor }) => <MaterialIcons name="star" size={24} color={tintColor} />,
-    },
-  },
-  MyNotesScreen: {
-    screen: MyNotesStack,
-    navigationOptions: {
-      tabBarLabel: 'MyNotes',
-      tabBarIcon: ({ tintColor }) => <MaterialCommunityIcons name="notebook-multiple" size={24} color={tintColor} />,
-    },
-  },
-}, {
-  tabBarOptions: {
-    activeTintColor: '#213c61',
-    inactiveTintColor: 'gray',
-    style: {
-      height: 60,
-      paddingBottom: 5,
-    },
-  },
-});
+const FavoritesStack = createNativeStackNavigator();
+function FavoritesStackScreen() {
+  return (
+    <FavoritesStack.Navigator>
+      <FavoritesStack.Screen name="Favorites" component={FavoritesScreen} />
+      <FavoritesStack.Screen name="Note" component={NoteScreen} />
+    </FavoritesStack.Navigator>
+  );
+}
 
-export default createAppContainer(TabNavigator);
+const MyNotesStack = createNativeStackNavigator();
+function MyNotesStackScreen() {
+  return (
+    <MyNotesStack.Navigator>
+      <MyNotesStack.Screen name="My notes" component={MyNotesScreen} />
+      <MyNotesStack.Screen name="Note" component={NoteScreen} />
+    </MyNotesStack.Navigator>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#213c61',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          height: 60,
+          paddingBottom: 5,
+        },
+      }}
+      >
+        <Tab.Screen
+          name="FeedTab"
+          component={FeedStackScreen}
+          options={{
+            tabBarLabel: 'Feed',
+            tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" size={24} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="FavoritesTab"
+          component={FavoritesStackScreen}
+          options={{
+            tabBarLabel: 'Favorites',
+            tabBarIcon: ({ color }) => <MaterialIcons name="star" size={24} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="MyNotesTab"
+          component={MyNotesStackScreen}
+          options={{
+            tabBarLabel: 'My notes',
+            tabBarIcon: ({ color }) => <MaterialCommunityIcons name="notebook-multiple" size={24} color={color} />,
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;

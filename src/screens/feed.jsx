@@ -1,23 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import NoteFeed from '../components/NoteFeed';
+import NoteList from '../components/NoteList';
 
-const propTypes = {
-  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-function Feed({ navigation }) {
-  const { navigate } = navigation;
-
+function Feed() {
   return (
-    <NoteFeed />
+    <NoteList />
   );
 }
 
 Feed.navigationOptions = {
   title: 'Feed',
 };
-
-Feed.propTypes = propTypes;
 
 export default Feed;
