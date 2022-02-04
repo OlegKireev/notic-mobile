@@ -1,9 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import styled from 'styled-components/native';
+
+const Wrapper = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
 function Preloader() {
   return (
-    <Text>Loading...</Text>
+    <Wrapper>
+      <ActivityIndicator size="large" color="#213c61" />
+    </Wrapper>
   );
 }
 
