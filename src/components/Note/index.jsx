@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Markdown from 'react-native-markdown-renderer';
 
 const StyledNote = styled.ScrollView`
   position: relative;
@@ -51,7 +52,11 @@ function Note({
     : StyledNote;
   return (
     <NoteComponent>
-      <Content>{data.content}</Content>
+      <Content>
+        <Markdown>
+          {data.content}
+        </Markdown>
+      </Content>
       {isPreview && (
         <LinearGradient
           colors={['transparent', 'white']}
