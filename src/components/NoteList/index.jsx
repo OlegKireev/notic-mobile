@@ -44,9 +44,11 @@ function NoteList({
             activeOpacity={0.5}
             onPress={handleNotePress(item.id)}
           >
-            <Note data={({
-              content: item.content,
-            })}
+            <Note
+              data={({
+                content: item.content,
+              })}
+              isPreview
             />
           </TouchableOpacity>
         )}
