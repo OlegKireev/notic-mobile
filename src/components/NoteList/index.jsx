@@ -4,6 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Note from '../Note';
+import { routes } from '../../routes';
 
 const propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({
@@ -37,7 +38,7 @@ function NoteList({
   const navigation = useNavigation();
 
   const handleNotePress = (id) => () => {
-    navigation.navigate('Note', {
+    navigation.navigate(routes.note, {
       id,
     });
   };
