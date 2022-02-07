@@ -22,6 +22,7 @@ function UserForm({
           value={email}
           label="Email:"
           autoFocus
+          placeholder="john@gmail.com"
           onChangeText={setEmail}
         />
         <Input
