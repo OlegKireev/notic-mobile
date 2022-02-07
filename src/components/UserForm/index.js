@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Form, Input, Label, InputsWrapper,
-} from './styled';
+import { Form, InputsWrapper } from './styled';
+import Input from '../UI/Input';
 import Button from '../UI/Button';
 
 const propTypes = {
@@ -18,20 +17,17 @@ function UserForm({
   return (
     <Form style={{ flex: 1 }}>
       <InputsWrapper>
-        <Label>Email:</Label>
         <Input
+          type="email"
           value={email}
-          textContentType="emailAddress"
-          autoCompleteType="email"
+          label="Email:"
           autoFocus
-          autoCapitalize="none"
           onChangeText={setEmail}
         />
-        <Label>Password:</Label>
         <Input
+          type="password"
           value={password}
-          textContentType="password"
-          secureTextEntry
+          label="Password:"
           onChangeText={setPassword}
         />
       </InputsWrapper>
