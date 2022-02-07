@@ -1,10 +1,17 @@
-import React from 'react';
-import { View, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Button, Text } from 'react-native';
+import { AuthContext } from '../context/auth';
 
 function LogIn() {
+  const { signIn } = useContext(AuthContext);
+
+  const handleLoginButtonPress = () => {
+    signIn('loginExample', 'passwordExample');
+  };
+
   return (
-    <View>
-      <Button title="Login" />
+    <View style={{ flex: 1 }}>
+      <Button title="Login" onPress={handleLoginButtonPress} />
     </View>
   );
 }
