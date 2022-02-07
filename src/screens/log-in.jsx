@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { View, Button, Text } from 'react-native';
+import { View } from 'react-native';
+import UserForm from '../components/UserForm';
 import { AuthContext } from '../context/auth';
 
 function LogIn() {
@@ -11,7 +12,7 @@ function LogIn() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Button title="Login" onPress={handleLoginButtonPress} />
+      <UserForm onLogin={handleLoginButtonPress} />
     </View>
   );
 }
