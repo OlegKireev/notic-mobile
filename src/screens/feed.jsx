@@ -2,8 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_NOTES } from '../api/query';
 import NoteList from '../components/NoteList';
-import Preloader from '../components/Preloader';
-import Error from '../components/Error';
+import Preloader from '../components/UI/Preloader';
+import Error from '../components/UI/Error';
 
 function Feed() {
   const {

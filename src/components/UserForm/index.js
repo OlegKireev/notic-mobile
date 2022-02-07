@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Form, Input, Label, InputsWrapper,
 } from './styled';
-import Button from '../Button';
+import Button from '../UI/Button';
 
 const propTypes = {
   onLogin: PropTypes.func.isRequired,

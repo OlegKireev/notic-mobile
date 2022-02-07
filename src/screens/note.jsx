@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigationState } from '@react-navigation/native';
 import { useQuery } from '@apollo/client';
 import { GET_NOTE } from '../api/query';
-import Preloader from '../components/Preloader';
-import Error from '../components/Error';
+import Preloader from '../components/UI/Preloader';
+import Error from '../components/UI/Error';
 import Note from '../components/Note';
 
 function NoteScreen() {
