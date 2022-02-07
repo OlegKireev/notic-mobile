@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View, Text, TextInput, Button,
 } from 'react-native';
@@ -11,12 +11,27 @@ const propTypes = {
 function UserForm({
   onLogin,
 }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <View style={{ flex: 1 }}>
       <Text>Email:</Text>
-      <TextInput />
+      <TextInput
+        value={email}
+        textContentType="emailAddress"
+        autoCompleteType="email"
+        autoFocus
+        autoCapitalize="none"
+        onChangeText={setEmail}
+      />
       <Text>Password:</Text>
-      <TextInput />
+      <TextInput
+        value={password}
+        textContentType="password"
+        secureTextEntry
+        onChangeText={setPassword}
+      />
       <Button title="Login" onPress={onLogin} />
     </View>
   );
