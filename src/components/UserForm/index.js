@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {
-  View, Text, TextInput, Button,
-} from 'react-native';
 import PropTypes from 'prop-types';
+import {
+  Form, Input, Label, Button, ButtonText,
+} from './styled';
 
 const propTypes = {
   onLogin: PropTypes.func.isRequired,
@@ -15,9 +15,9 @@ function UserForm({
   const [password, setPassword] = useState('');
 
   return (
-    <View style={{ flex: 1 }}>
-      <Text>Email:</Text>
-      <TextInput
+    <Form style={{ flex: 1 }}>
+      <Label>Email:</Label>
+      <Input
         value={email}
         textContentType="emailAddress"
         autoCompleteType="email"
@@ -25,15 +25,20 @@ function UserForm({
         autoCapitalize="none"
         onChangeText={setEmail}
       />
-      <Text>Password:</Text>
-      <TextInput
+      <Label>Password:</Label>
+      <Input
         value={password}
         textContentType="password"
         secureTextEntry
         onChangeText={setPassword}
       />
-      <Button title="Login" onPress={onLogin} />
-    </View>
+      <Button
+        activeOpacity={0.8}
+        onPress={onLogin}
+      >
+        <ButtonText>Login</ButtonText>
+      </Button>
+    </Form>
   );
 }
 
