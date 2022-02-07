@@ -17,6 +17,8 @@ const propTypes = {
     createdAt: PropTypes.string,
     favoriteCount: PropTypes.number,
   })).isRequired,
+  loading: PropTypes.bool.isRequired,
+  onNoteListRefresh: PropTypes.func.isRequired,
 };
 
 const List = styled.FlatList`
@@ -29,6 +31,8 @@ const ListSeparator = styled.View`
 
 function NoteList({
   data,
+  loading,
+  onNoteListRefresh,
 }) {
   const navigation = useNavigation();
 
@@ -43,6 +47,7 @@ function NoteList({
       <List
         data={data}
         keyExtractor={({ id }) => String(id)}
+        refreshing={loading}
         renderItem={({ item }) => (
           <TouchableOpacity
             activeOpacity={0.75}
@@ -55,6 +60,7 @@ function NoteList({
           </TouchableOpacity>
         )}
         ItemSeparatorComponent={() => <ListSeparator />}
+        onRefresh={onNoteListRefresh}
       />
     </View>
   );
