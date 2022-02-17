@@ -90,7 +90,7 @@ function Note({
           {data.content}
         </Markdown>
       </SafeAreaView>
-      <Footer />
+      {isPreview && <Footer />}
       {isPreview && (
         <LinearGradient
           colors={['transparent', 'white', 'white']}
