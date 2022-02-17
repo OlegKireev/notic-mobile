@@ -21,7 +21,7 @@ function MyNotes() {
   if (error) return <Error>{error.message}</Error>;
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1 }}>
       <NoteList
         data={data.me.notes}
         loading={loading}
