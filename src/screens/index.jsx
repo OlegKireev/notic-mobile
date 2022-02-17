@@ -111,13 +111,13 @@ function App() {
 
   useEffect(() => {
     const bootstrapAsync = async () => {
-      let userToken;
+      let token;
       try {
-        userToken = await SecureStore.getItemAsync('userToken');
+        token = await SecureStore.getItemAsync('token');
       } catch (err) {
         console.error(err);
       }
-      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+      dispatch({ type: 'RESTORE_TOKEN', token });
     };
 
     bootstrapAsync();
@@ -127,8 +127,12 @@ function App() {
     () => ({
       signIn: async (token) => {
         dispatch({ type: 'LOG_IN', token });
+        SecureStore.setItemAsync('token', token);
       },
-      signOut: () => dispatch({ type: 'LOG_OUT' }),
+      signOut: () => {
+        dispatch({ type: 'LOG_OUT' });
+        SecureStore.deleteItemAsync('token');
+      },
       signUp: async (data) => {
         // In a production app, we need to send user data to server and get a token
         // We will also need to handle errors if sign up failed
