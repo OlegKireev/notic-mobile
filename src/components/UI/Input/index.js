@@ -5,7 +5,7 @@ import { Wrapper, Input as StyledInput, Label } from './styled';
 const propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'email', 'password']),
+  type: PropTypes.oneOf(['text', 'email', 'password', 'username']),
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onChangeText: PropTypes.func,
@@ -43,6 +43,10 @@ function Input({
     textContentType = 'password';
     autoCompleteType = 'password';
     secureTextEntry = true;
+  }
+
+  if (type === 'username') {
+    textContentType = 'username';
   }
 
   const onInputFocus = () => {
