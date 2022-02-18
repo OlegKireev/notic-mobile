@@ -12,6 +12,7 @@ import NoteScreen from './note';
 import LogInScreen from './log-in';
 import SettingsScreen from './settings';
 import AuthLoadingScreen from './auth-loading';
+import SignUp from './sign-up';
 import { routes } from '../routes';
 import { AuthContext } from '../context/auth';
 import { initialState, reducer } from '../store/auth';
@@ -158,6 +159,7 @@ function App() {
               <AuthStack.Screen name={routes.authLoading} component={AuthLoadingScreen} />
             )}
             <AuthStack.Screen name={routes.login} component={LogInScreen} />
+            <AuthStack.Screen name={routes.register} component={SignUp} />
           </AuthStack.Navigator>
         )}
       </NavigationContainer>
