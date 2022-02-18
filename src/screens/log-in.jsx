@@ -14,7 +14,7 @@ function LogIn() {
     },
   });
 
-  const handleLoginButtonPress = (email, password) => {
+  const handleLoginButtonPress = ({ email, password }) => {
     signInAction({
       variables: {
         email,
@@ -29,7 +29,7 @@ function LogIn() {
         formType="signIn"
         loading={loading}
         error={error?.message}
-        onLogin={handleLoginButtonPress}
+        onSubmit={handleLoginButtonPress}
       />
     </View>
   );
