@@ -2,7 +2,7 @@
   "expo": {
     "name": "Notic",
     "slug": "notic-mobile",
-    "description": "An example React Native app",
+    "description": "Mobile cross-platform app created with React-Native for a manage notes app.",
     "privacy": "public",
     "version": "0.0.1",
     "platforms": [
@@ -29,7 +29,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/custom/icon-01.png",
         "backgroundColor": "#AAEDEE"
-      }
+      },
+      "package": "app.netlify.notic"
     },
     "web": {
       "favicon": "./assets/favicon.png"
