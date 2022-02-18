@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, InputsWrapper } from './styled';
+import { useNavigation } from '@react-navigation/native';
+import { Text } from 'react-native';
+import {
+  Form, InputsWrapper, TextLink, SignUp,
+} from './styled';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import Error from '../UI/Error';
 import Preloader from '../UI/Preloader';
+import { routes } from '../../routes';
 
 const propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.string,
-  onLogin: PropTypes.func.isRequired,
+  formType: PropTypes.oneOf(['signIn', 'signUp']).isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 const defaultProps = {
   loading: false,
@@ -19,13 +25,16 @@ const defaultProps = {
 function UserForm({
   loading,
   error,
-  onLogin,
+  formType,
+  onSubmit,
 }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const handleSubmit = () => {
-    onLogin(email, password);
+    onSubmit({ email, username, password });
   };
 
   return (
@@ -39,6 +48,15 @@ function UserForm({
           placeholder="john@gmail.com"
           onChangeText={setEmail}
         />
+        {formType === 'signUp' && (
+          <Input
+            type="username"
+            value={username}
+            label="Username:"
+            placeholder="JohnPower"
+            onChangeText={setUsername}
+          />
+        )}
         <Input
           type="password"
           value={password}
@@ -54,8 +72,27 @@ function UserForm({
           <Error>{error}</Error>
         )}
       </InputsWrapper>
+      {formType === 'signUp'
+        ? (
+          <SignUp onPress={() => navigation.navigate(routes.login)}>
+            <Text>
+              Already have an account?
+            </Text>
+            <TextLink>Sign in</TextLink>
+          </SignUp>
+        )
+        : (
+          <SignUp onPress={() => navigation.navigate(routes.register)}>
+            <Text>
+              Need an account?
+            </Text>
+            <TextLink>Sign up</TextLink>
+          </SignUp>
+        )}
       <Button onPress={handleSubmit}>
-        Login
+        {formType === 'signUp'
+          ? 'Sign up'
+          : 'Login'}
       </Button>
     </Form>
   );
